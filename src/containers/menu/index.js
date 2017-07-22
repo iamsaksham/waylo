@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
+import Button from 'react-bootstrap/lib/Button'
 import { connect } from 'react-redux'
 import {
   increment,
@@ -8,28 +9,18 @@ import {
   decrement,
   decrementAsync
 } from '../../modules/counter'
-import Menu from '../menu'
 
-class Map extends Component {
-  componentDidMount() {
-    // let latlng = new window.google.maps.LatLng(39.305, -76.617);
-    // let map = new window.google.maps.Map(document.getElementById('gmap'), {
-    //   center: latlng,
-    //   zoom: 12
-    // });
-    let India = {lat: 20.5937, lng: 78.9629};
-    new window.google.maps.Map(document.getElementById('gmap'), {
-      zoom: 4,
-      center: India
-    });
-  }
+class Menu extends Component {
+
   render() {
     return (
-      <div>
-        <div style={{position: 'absolute', height: '100%', width: '5%'}}>
-          <Menu />
+      <div style={{height: '100%', width: '100%', backgroundColor: '#121f1f'}}>
+        <div style={{paddingTop: '200px'}}>
+          <Button style={{width: '100%', height: '20px'}} bsClass="glyphicon glyphicon-camera" onClick={() => this.props.changePageToChart()}></Button>
         </div>
-        <div id="gmap" style={{left: '5%', height:'825px', margin: 0, padding: 0}}></div>
+        <div style={{paddingTop: '20px'}}>
+          <Button style={{width: '100%', height: '20px'}} bsClass="glyphicon glyphicon-camera" onClick={() => this.props.changePageToMap()}></Button>
+        </div>
       </div>
     )
   }
@@ -46,10 +37,11 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   incrementAsync,
   decrement,
   decrementAsync,
-  changePage: () => push('/')
+  changePageToChart: () => push('/'),
+  changePageToMap: () => push('/map')
 }, dispatch)
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Map)
+)(Menu)
