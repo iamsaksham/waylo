@@ -9,6 +9,7 @@ import {
   decrementAsync
 } from '../../modules/counter'
 import Menu from '../menu'
+import Sidebar from '../sidebar'
 
 class Map extends Component {
   componentDidMount() {
@@ -26,10 +27,13 @@ class Map extends Component {
   render() {
     return (
       <div>
-        <div style={{position: 'absolute', height: '100%', width: '5%'}}>
+        <div style={{position: 'absolute', height: '100%', width: '3%'}}>
           <Menu />
         </div>
-        <div id="gmap" style={{left: '5%', height:'825px', margin: 0, padding: 0}}></div>
+        <div id="gmap" style={{left: '3%', height:'825px', width: '70%', margin: 0, padding: 0}}></div>
+        <div style={{position: 'absolute', height: '100%', left: '75%', top: '0px'}}>
+          <Sidebar />
+        </div>
       </div>
     )
   }

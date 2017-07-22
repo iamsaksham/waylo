@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
-import Button from 'react-bootstrap/lib/Button'
+import Glyphicon from 'react-bootstrap/lib/Glyphicon'
 import { connect } from 'react-redux'
 import {
   increment,
@@ -15,11 +15,11 @@ class Menu extends Component {
   render() {
     return (
       <div style={{height: '100%', width: '100%', backgroundColor: '#121f1f'}}>
-        <div style={{paddingTop: '200px'}}>
-          <Button style={{width: '100%', height: '20px'}} bsClass="glyphicon glyphicon-camera" onClick={() => this.props.changePageToChart()}></Button>
+        <div style={{paddingTop: '200px', marginLeft: '15%', color: 'white'}}>
+          <Glyphicon glyph="stats" onClick={() => this.props.changePageToChart()}/>
         </div>
-        <div style={{paddingTop: '20px'}}>
-          <Button style={{width: '100%', height: '20px'}} bsClass="glyphicon glyphicon-camera" onClick={() => this.props.changePageToMap()}></Button>
+        <div style={{paddingTop: '20px', marginLeft: '15%', color: 'white'}}>
+          <Glyphicon glyph="map-marker" onClick={() => this.props.changePageToMap()}/>
         </div>
       </div>
     )
