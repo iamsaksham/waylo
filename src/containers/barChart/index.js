@@ -3,15 +3,15 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import BarChart from 'react-bar-chart'
 
-const data = [
-  {text: 'Monday', value: 500},
-  {text: 'Tuesday', value: 300},
-  {text: 'Wednesday', value: 300},
-  {text: 'Thursday', value: 300},
-  {text: 'Friday', value: 300},
-  {text: 'Saturday', value: 300},
-  {text: 'Sunday', value: 300}
-];
+// const data = [
+//   {text: 'Monday', value: 500},
+//   {text: 'Tuesday', value: 300},
+//   {text: 'Wednesday', value: 300},
+//   {text: 'Thursday', value: 300},
+//   {text: 'Friday', value: 300},
+//   {text: 'Saturday', value: 300},
+//   {text: 'Sunday', value: 300}
+// ];
 
 const margin = {top: 60, right: 20, bottom: 30, left: 40};
 
@@ -24,7 +24,7 @@ class BarChartComponent extends Component {
   }
 
   render() {
-
+    let {data} = this.props;
     return (
       <div style={{marginTop: '1%', backgroundColor: '#D8D8D8', width: '900px', height: '590px'}}>
         <BarChart

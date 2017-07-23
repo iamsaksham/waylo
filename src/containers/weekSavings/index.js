@@ -5,11 +5,11 @@ import { connect } from 'react-redux'
 class WeekSavings extends Component {
 
   getDailySavings = () => {
-    let {startDate, finishDate} = this.props;
-    let day = 1,
+    let {data} = this.props;
+    let day = 0,
         savings = [];
-    while(day <= 7) {
-      savings.push(<div key={day} style={{width: '58%', margin: '0 auto', paddingTop: '5%'}}>{startDate} to {finishDate}</div>)
+    while(data[day] && day < 7) {
+      savings.push(<div key={day} style={{width: '58%', margin: '0 auto', paddingTop: '5%'}}>{data[day].text} - {data[day].value}</div>)
       day++;
     }
     return savings

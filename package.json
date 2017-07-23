@@ -3,10 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "concurrently": "^3.5.0",
     "react-scripts": "^1.0.10"
   },
   "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "foreman": "^2.0.0",
+    "marked": "^0.3.6",
     "moment": "^2.18.1",
+    "mongoose": "^4.11.3",
+    "nodemon": "^1.11.0",
     "react": "^15.5.4",
     "react-bar-chart": "^0.1.2",
     "react-bootstrap": "^0.31.1",
@@ -21,8 +29,8 @@
     "sanitize.css": "^5.0.0"
   },
   "scripts": {
+    "serve": "concurrently 'npm run start' 'nodemon server.js'",
     "start": "react-scripts start",
-    "start-dev": "nodemon server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"

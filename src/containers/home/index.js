@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
-import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import moment from 'moment'
-import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync
-} from '../../modules/counter'
+import axios from 'axios'
 import Menu from '../menu'
 import TotalSavings from '../totalSavings'
 import WeekSavings from '../weekSavings'
@@ -21,9 +15,28 @@ class Home extends Component {
     super(props)
     this.state = {
       startDate: '17-07-2017',
-      endDate: moment()
+      endDate: moment(),
+      data: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.loadDataFromServer = this.loadDataFromServer.bind(this);
+  }
+
+  componentWillMount() {
+    this.loadDataFromServer();
+  }
+
+  loadDataFromServer() {
+    axios.get("http://localhost:3001/api/savings")
+    .then(res => {
+      let day = 0;
+      let savingsData = [];
+      while(day < 7) {
+        savingsData.push({text: res.data[day].day, value: res.data[day].value})
+        day++;
+      }
+      this.setState({ data: savingsData });
+    })
   }
 
   handleChange(date) {
@@ -34,6 +47,7 @@ class Home extends Component {
 
   render () {
     let finishDate = moment(new Date(this.state.endDate)).format("DD/MM/YYYY")
+    let {data} = this.state;
 
     return (
       <div>
@@ -56,10 +70,10 @@ class Home extends Component {
             <TotalSavings startDate={this.state.startDate} finishDate={finishDate}/>
           </div>
           <div style={{marginLeft: '0%'}}>
-            <WeekSavings startDate={this.state.startDate} finishDate={finishDate}/>
+            <WeekSavings data={data}/>
           </div>
           <div style={{marginLeft: '0%', marginTop: '-66%', float: 'right', width: '65%'}}>
-            <BarChart />
+            <BarChart data={data}/>
           </div>
         </div>
       </div>
@@ -68,17 +82,9 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => ({
-  count: state.counter.count,
-  isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
-  changePage: () => push('/map')
 }, dispatch)
 
 export default connect(
