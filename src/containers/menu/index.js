@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
-import Glyphicon from 'react-bootstrap/lib/Glyphicon'
 import { connect } from 'react-redux'
-import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync
-} from '../../modules/counter'
+import Glyphicon from 'react-bootstrap/lib/Glyphicon'
 
 class Menu extends Component {
 
@@ -27,16 +21,9 @@ class Menu extends Component {
 }
 
 const mapStateToProps = state => ({
-  count: state.counter.count,
-  isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
   changePageToChart: () => push('/'),
   changePageToMap: () => push('/map')
 }, dispatch)

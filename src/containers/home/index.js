@@ -1,32 +1,63 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import moment from 'moment'
 import {
   increment,
   incrementAsync,
   decrement,
   decrementAsync
 } from '../../modules/counter'
+import Menu from '../menu'
+import TotalSavings from '../totalSavings'
 
-const Home = props => (
-  <div>
-    <h1>Home</h1>
-    <p>Count: {props.count}</p>
+class Home extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      startDate: '17-07-2017',
+      endDate: moment()
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-    <p>
-      <button onClick={props.increment} disabled={props.isIncrementing}>Increment</button>
-      <button onClick={props.incrementAsync} disabled={props.isIncrementing}>Increment Async</button>
-    </p>
+  handleChange(date) {
+    this.setState({
+      endDate: date
+    });
+  }
 
-    <p>
-      <button onClick={props.decrement} disabled={props.isDecrementing}>Decrementing</button>
-      <button onClick={props.decrementAsync} disabled={props.isDecrementing}>Decrement Async</button>
-    </p>
+  render () {
+    let finishDate = moment(new Date(this.state.endDate)).format("DD/MM/YYYY")
 
-    <p><button onClick={() => props.changePage()}>Go to about page via redux</button></p>
-  </div>
-)
+    return (
+      <div>
+        <div style={{position: 'absolute', height: '100%', width: '3%'}}>
+          <Menu />
+        </div>
+        <div style={{position: 'absolute', height: '100%', marginLeft: '5%'}}>
+          <h3>Good Morning, Hotel</h3>
+        </div>
+        <div style={{position: 'absolute', height: '100%', marginLeft: '10%', width: '100%', marginTop: '8%'}}>
+          <div style={{width: '50%', margin: '0 auto'}}>Savings from {this.state.startDate} to {finishDate}</div>
+          <div style={{marginLeft: '70%'}}>
+            <DatePicker
+              dateFormat="DD/MM/YYYY"
+              selected={this.state.endDate}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div style={{marginLeft: '0%'}}>
+            <TotalSavings startDate={this.state.startDate} finishDate={finishDate}/>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
 
 const mapStateToProps = state => ({
   count: state.counter.count,

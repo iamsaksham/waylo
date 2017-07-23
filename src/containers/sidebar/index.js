@@ -1,14 +1,7 @@
 import React, { Component } from 'react'
-import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
-import Button from 'react-bootstrap/lib/Button'
 import { connect } from 'react-redux'
-import {
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync
-} from '../../modules/counter'
+import Button from 'react-bootstrap/lib/Button'
 
 class Sidebar extends Component {
 
@@ -27,7 +20,7 @@ class Sidebar extends Component {
     return (
       <div style={{height: '100%', width: '100%', backgroundColor: 'white'}}>
         <div style={{height: '25%', width: '110%'}}>
-          <img src="http://vignette2.wikia.nocookie.net/marvelmovies/images/8/87/AoU_Tony_Stark_portal.png/revision/latest?cb=20150427084736" className="user-avatar" style={avatarStyle}></img>
+          <img src="http://vignette2.wikia.nocookie.net/marvelmovies/images/8/87/AoU_Tony_Stark_portal.png/revision/latest?cb=20150427084736" alt="avatar" className="user-avatar" style={avatarStyle}></img>
           <div style={{ float : "left", marginTop: '10%', marginLeft: '10%'}}><h3>Tony Stark</h3></div>
         </div>
         <div style={{ float : "left", marginTop: '8%', width: '100%', marginLeft: '2%', wordSpacing: '40px'}}>
@@ -52,18 +45,9 @@ class Sidebar extends Component {
 }
 
 const mapStateToProps = state => ({
-  count: state.counter.count,
-  isIncrementing: state.counter.isIncrementing,
-  isDecrementing: state.counter.isDecrementing
 })
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  increment,
-  incrementAsync,
-  decrement,
-  decrementAsync,
-  changePageToChart: () => push('/'),
-  changePageToMap: () => push('/map')
 }, dispatch)
 
 export default connect(
