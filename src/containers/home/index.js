@@ -13,6 +13,8 @@ import {
 } from '../../modules/counter'
 import Menu from '../menu'
 import TotalSavings from '../totalSavings'
+import WeekSavings from '../weekSavings'
+import BarChart from '../barChart'
 
 class Home extends Component {
   constructor (props) {
@@ -41,9 +43,9 @@ class Home extends Component {
         <div style={{position: 'absolute', height: '100%', marginLeft: '5%'}}>
           <h3>Good Morning, Hotel</h3>
         </div>
-        <div style={{position: 'absolute', height: '100%', marginLeft: '10%', width: '100%', marginTop: '8%'}}>
+        <div style={{position: 'absolute', marginLeft: '10%', marginTop: '8%'}}>
           <div style={{width: '50%', margin: '0 auto'}}>Savings from {this.state.startDate} to {finishDate}</div>
-          <div style={{marginLeft: '70%'}}>
+          <div style={{marginLeft: '70%', float: 'right'}}>
             <DatePicker
               dateFormat="DD/MM/YYYY"
               selected={this.state.endDate}
@@ -52,6 +54,12 @@ class Home extends Component {
           </div>
           <div style={{marginLeft: '0%'}}>
             <TotalSavings startDate={this.state.startDate} finishDate={finishDate}/>
+          </div>
+          <div style={{marginLeft: '0%'}}>
+            <WeekSavings startDate={this.state.startDate} finishDate={finishDate}/>
+          </div>
+          <div style={{marginLeft: '0%', marginTop: '-66%', float: 'right', width: '65%'}}>
+            <BarChart />
           </div>
         </div>
       </div>

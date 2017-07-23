@@ -16,9 +16,9 @@ class TotalSavings extends Component {
     let {startDate, finishDate} = this.props;
 
     return (
-      <div style={{marginTop: '4%', backgroundColor: '#FFCB0C', width: '250px', height: '180px'}}>
-        <div style={{width: '48%', margin: '0 auto', paddingTop: '12%', fontFamily: 'arial', fontSize: '20px'}}>Total Savings</div>
-        <div style={{width: '70%', margin: '0 auto', paddingTop: '5%'}}>{startDate} to {finishDate}</div>
+      <div style={{marginTop: '4%', backgroundColor: '#FFCB0C', width: '300px', height: '225px'}}>
+        <div style={{width: '43%', margin: '0 auto', paddingTop: '12%', fontFamily: 'arial', fontSize: '20px'}}>Total Savings</div>
+        <div style={{width: '58%', margin: '0 auto', paddingTop: '5%'}}>{startDate} to {finishDate}</div>
         <div style={{width: '75%', margin: '0 auto', paddingTop: '8%', fontSize: '30px'}}>
           {this.getTotalPercent()} | {this.getTotalAmount()}
         </div>

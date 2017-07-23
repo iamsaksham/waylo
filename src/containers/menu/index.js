@@ -9,10 +9,10 @@ class Menu extends Component {
   render() {
     return (
       <div style={{height: '100%', width: '100%', backgroundColor: '#121f1f'}}>
-        <div style={{paddingTop: '200px', marginLeft: '15%', color: 'white'}}>
+        <div style={{paddingTop: '200px', marginLeft: '25%', color: 'white'}}>
           <Glyphicon glyph="stats" onClick={() => this.props.changePageToChart()}/>
         </div>
-        <div style={{paddingTop: '20px', marginLeft: '15%', color: 'white'}}>
+        <div style={{paddingTop: '30px', marginLeft: '25%', color: 'white'}}>
           <Glyphicon glyph="map-marker" onClick={() => this.props.changePageToMap()}/>
         </div>
       </div>
